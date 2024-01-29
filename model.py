@@ -5,7 +5,8 @@ import json
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
 
-# Model creation function
+# Model creation function, was used initially for determing x,y coordinates, you can use this however
+# you'd like, adjust the values and layers/play around with it.
 def create_model(sequence_length, num_features, num_output=4):
     model = Sequential([
         LSTM(128, input_shape=(sequence_length, num_features), return_sequences=True),
@@ -31,6 +32,8 @@ def normalize_data(features):
     scaler = MinMaxScaler()
     return scaler.fit_transform(features)
 
+
+# adjust the features to whatever your data is.
 # Load and preprocess data
 def load_and_preprocess_data(file_path, sequence_length=5):
     with open(file_path, 'r') as file:
